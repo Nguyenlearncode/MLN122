@@ -115,6 +115,7 @@ body {
   flex: 1;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   min-height: 0;
 }
 
@@ -571,8 +572,7 @@ body {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 14px;
-  flex: 1;
-  align-content: center;
+  align-content: start;
 }
 .card {
   background: var(--bg-card);
@@ -612,10 +612,8 @@ body {
 /* Lenin 5-points grid (2+2+1 layout) */
 .lenin-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
+  grid-template-columns: repeat(4, 1fr);
   gap: 12px;
-  flex: 1;
 }
 .lenin-card {
   background: var(--bg-card);
@@ -675,8 +673,6 @@ body {
 .tier-list {
   display: flex; flex-direction: column;
   gap: clamp(12px, 1.8vh, 16px);
-  flex: 1;
-  justify-content: center;
 }
 .tier {
   display: flex; gap: 20px;
@@ -861,8 +857,7 @@ body {
   grid-template-columns: 1fr 1fr;
   gap: 14px;
   margin-bottom: clamp(14px, 2vh, 20px);
-  flex: 1;
-  align-content: center;
+  align-content: start;
 }
 .compare-col {
   background: var(--bg-card);
@@ -1001,6 +996,214 @@ body {
   opacity: 0.3;
   cursor: not-allowed;
   transform: none;
+}
+
+/* =========================== */
+/* NEW COMPONENTS (v3)          */
+/* =========================== */
+
+/* Definition title */
+.def-title {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: clamp(11px, 1.1vw, 13px);
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--nv-green-bright);
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+.def-title.red { color: var(--phil-red-bright); }
+
+/* Argument detail blocks (luận điểm) */
+.arg-detail {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(14px, 2vh, 22px);
+}
+.arg-left {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(12px, 1.5vw, 20px);
+}
+.arg-block {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: clamp(16px, 2.2vh, 24px) clamp(18px, 2.4vw, 26px);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.arg-block.red-block {
+  border-color: var(--border-red);
+  background: linear-gradient(135deg, rgba(200,16,46,0.08), rgba(22,30,26,0.9));
+}
+.arg-block.green-block {
+  border-color: rgba(118,185,0,0.35);
+  background: linear-gradient(135deg, rgba(118,185,0,0.08), rgba(22,30,26,0.9));
+}
+.arg-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: clamp(10px, 1vw, 12px);
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--nv-green-bright);
+  font-weight: 600;
+}
+.arg-label.red { color: var(--phil-red-bright); }
+.arg-block p {
+  font-size: clamp(13px, 1.3vw, 16px);
+  line-height: 1.55;
+  color: var(--text);
+  margin: 0;
+}
+.arg-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.arg-list li {
+  font-size: clamp(13px, 1.3vw, 15px);
+  line-height: 1.5;
+  color: var(--text);
+  padding-left: 16px;
+  position: relative;
+}
+.arg-list li::before {
+  content: '▸';
+  position: absolute;
+  left: 0;
+  color: var(--nv-green-bright);
+}
+
+/* Example box (Việt Nam VD) */
+.example-box {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: clamp(16px, 2.2vh, 22px) clamp(18px, 2.4vw, 26px);
+  margin-bottom: clamp(12px, 1.8vh, 18px);
+}
+.example-box.red-border {
+  border-color: var(--border-red);
+  background: linear-gradient(135deg, rgba(200,16,46,0.06), rgba(22,30,26,0.9));
+}
+.ex-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: clamp(10px, 1vw, 12px);
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--nv-green-bright);
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+.ex-label.red { color: var(--phil-red-bright); }
+.example-box p {
+  font-size: clamp(13px, 1.3vw, 16px);
+  line-height: 1.55;
+  color: var(--text);
+  margin: 0;
+}
+
+/* Open question grid (2 cols) */
+.open-q-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(14px, 1.8vw, 22px);
+}
+.open-q-grid .open-q {
+  margin: 0;
+}
+
+/* Single open question (hero style) */
+.open-q-single {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--nv-green);
+  border-radius: 16px;
+  padding: clamp(28px, 4vh, 44px) clamp(30px, 4vw, 56px);
+  position: relative;
+  max-width: 1080px;
+  margin: 0 auto;
+}
+.open-q-single .q-mark {
+  font-family: 'Be Vietnam Pro', sans-serif;
+  font-size: clamp(60px, 8vw, 110px);
+  font-weight: 900;
+  line-height: 1;
+  color: var(--phil-red-bright);
+  opacity: 0.35;
+  position: absolute;
+  top: 12px;
+  right: 28px;
+}
+.open-q-single p {
+  font-size: clamp(18px, 1.9vw, 24px);
+  line-height: 1.55;
+  color: var(--text);
+  margin: 0;
+  position: relative;
+  z-index: 1;
+}
+
+/* AI Usage grid */
+.ai-usage-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(10px, 1.4vw, 16px);
+  margin-bottom: clamp(14px, 2vh, 22px);
+}
+.ai-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: clamp(12px, 1.8vh, 18px) clamp(14px, 1.8vw, 20px);
+  transition: border-color .3s ease, transform .3s ease;
+}
+.ai-card:hover {
+  border-color: var(--nv-green);
+  transform: translateY(-2px);
+}
+.ai-name {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: clamp(13px, 1.3vw, 16px);
+  color: var(--nv-green-bright);
+  font-weight: 700;
+  margin-bottom: 6px;
+  letter-spacing: 0.02em;
+}
+.ai-card p {
+  font-size: clamp(11px, 1.1vw, 13px);
+  line-height: 1.45;
+  color: var(--text-dim);
+  margin: 0;
+}
+
+/* Sources grid (links list) */
+.sources-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(8px, 1vw, 12px);
+}
+.source-link {
+  display: block;
+  background: rgba(22,30,26,0.6);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: clamp(8px, 1.1vh, 12px) clamp(10px, 1.2vw, 14px);
+  font-size: clamp(11px, 1.05vw, 13px);
+  color: var(--text-dim);
+  text-decoration: none;
+  transition: all .2s ease;
+  line-height: 1.4;
+}
+.source-link:hover {
+  border-color: var(--nv-green);
+  color: var(--nv-green-bright);
+  transform: translateX(3px);
 }
 
 /* Responsive */
